@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_app/DetailPage.dart';
 
 import 'Foods.dart';
 
@@ -64,33 +65,43 @@ class _MyHomePageState extends State<MyHomePage> {
               itemCount: foodList!.length,
               itemBuilder: (context, indeks) {
                 var food = foodList[indeks];
-                return Card(
-                  child: Row(
-                    children: [
-                      SizedBox(
-                          height: 150,
-                          width: 150,
-                          child:
-                              Image.asset(("Images/${food.foodImagesName}"))),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            food.foodName,
-                            style: TextStyle(fontSize: 25),
-                          ),
-                          SizedBox(
-                            height: 50,
-                          ),
-                          Text(
-                            "${food.foodPrize} \u{20BA}",
-                            style: TextStyle(fontSize: 25, color: Colors.blue),
-                          ),
-                        ],
-                      ),
-                      Spacer(),
-                      Icon(Icons.keyboard_arrow_right)
-                    ],
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => DetailPage(food),
+                        ));
+                  },
+                  child: Card(
+                    child: Row(
+                      children: [
+                        SizedBox(
+                            height: 150,
+                            width: 150,
+                            child:
+                                Image.asset(("Images/${food.foodImagesName}"))),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              food.foodName,
+                              style: TextStyle(fontSize: 25),
+                            ),
+                            SizedBox(
+                              height: 50,
+                            ),
+                            Text(
+                              "${food.foodPrize} \u{20BA}",
+                              style:
+                                  TextStyle(fontSize: 25, color: Colors.blue),
+                            ),
+                          ],
+                        ),
+                        Spacer(),
+                        Icon(Icons.keyboard_arrow_right)
+                      ],
+                    ),
                   ),
                 );
               },

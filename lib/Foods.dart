@@ -1,4 +1,4 @@
-class Foods{
+class Foods {
   late int foodId;
   late String foodName;
   late String foodImagesName;
